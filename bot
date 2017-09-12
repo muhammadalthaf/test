@@ -1,0 +1,34 @@
+<wsdl:definitions xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="urn:blueprism:webservice:testword"xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="testwordService"targetNamespace="urn:blueprism:webservice:testword">
+<wsdl:types>
+<s:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="urn:blueprism:webservice:testword"/>
+</wsdl:types>
+<wsdl:message name="testwordRequest">
+<wsdl:part name="test" type="s:decimal"/>
+</wsdl:message>
+<wsdl:message name="testwordResponse">
+<wsdl:part name="testout" type="s:decimal"/>
+</wsdl:message>
+<wsdl:portType name="testwordPortType">
+<wsdl:operation name="testword">
+<wsdl:input message="tns:testwordRequest"/>
+<wsdl:output message="tns:testwordResponse"/>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="testwordSoapBinding" type="tns:testwordPortType">
+<soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="testword">
+<soap:operation soapAction="" style="rpc"/>
+<wsdl:input>
+<soap:body use="encoded" namespace="urn:blueprism:webservice:testword" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="encoded" namespace="urn:blueprism:webservice:testword" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="testwordService">
+<wsdl:port name="testwordSoap" binding="tns:testwordSoapBinding">
+<soap:address location="http://IN2135516W1:8181/ws/testword"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>
